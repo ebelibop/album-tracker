@@ -18,4 +18,12 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
+  {
+    files: ['api/**/*.js', 'vite.config.js'],
+    languageOptions: { globals: globals.node },
+  },
+  {
+    files: ['src/context/**/*.jsx', 'src/components/StatusSelect.jsx'],
+    rules: { 'react-refresh/only-export-components': 'off' },
+  },
 ])

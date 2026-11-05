@@ -4,7 +4,20 @@ export async function getRecommendations(taste) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ taste }),
     });
-    const data = await res.json();
+
+    let data;
+    try {
+        data = await res.json();
+    } catch {
+        throw new Error(
+            "The recommendation service returned an invalid response. Check the server logs."
+        );
+    }
+
     if (!res.ok) throw new Error(data.error || "Could not get recommendations.");
-return data;
+    if (!Array.isArray(data.albums)) {
+        throw new Error("The recommendation service returned no album list.");
+    }
+
+    return data;
 }

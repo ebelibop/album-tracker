@@ -27,7 +27,7 @@ export default async function handler(req, res) {
     });
   }
 
-  const MODEL = "gemini-2.5-flash";
+  const MODEL = "gemini-3.8-flash";
 
   try {
     const r = await fetch(
@@ -71,10 +71,23 @@ export default async function handler(req, res) {
     }
 
     const data = await r.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text ?? "{}";
-    const parsed = JSON.parse(text);
+    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    if (!text) {
+      console.error("Gemini returned no generated content.");
+      return res.status(502).json({
+        error: "Gemini returned no recommendations. Try again and check the terminal if it continues."
+      });
+    }
 
-    return res.status(200).json({ albums: parsed.albums ?? [] });
+    const parsed = JSON.parse(text);
+    if (!Array.isArray(parsed.albums)) {
+      console.error("Gemini returned an invalid recommendation format.");
+      return res.status(502).json({
+        error: "Gemini returned an invalid recommendation format. Try again."
+      });
+    }
+
+    return res.status(200).json({ albums: parsed.albums });
   } catch (err) {
     console.error("Function error:", err);
     return res.status(500).json({

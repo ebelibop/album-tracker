@@ -4,7 +4,9 @@ const norm = (s = "") =>
 export async function findDeezerAlbumId(title, artist) {
     const res = await fetch(`/api/deezer?q=${encodeURIComponent(`${title}
 ${artist}`)}`);
-    if (!res.ok) return null;
+    if (!res.ok) {
+        throw new Error("Could not search Deezer for this album.");
+    }
     const { albums = [] } = await res.json();
     const t = norm(title);
     const a = norm(artist);
@@ -18,3 +20,21 @@ ${artist}`)}`);
     });
     return match?.id ?? null;
 }
+
+export async function getDeezerAlbumTracks(albumId) {
+    const res = await fetch(`/api/deezer?action=tracks&id=${albumId}`);
+    if (!res.ok) {
+        throw new Error("Could not load Deezer track previews.");
+    }
+    const { tracks } = await res.json();
+    if (!Array.isArray(tracks)) {
+        throw new Error("Deezer returned an invalid track list.");
+    }
+    return tracks;
+}
+
+export const normalizeTrackTitle = (title = "") =>
+    title
+        .toLowerCase()
+        .replace(/\s*\(.*?\)|\s*\[.*?\]/g, "")
+        .replace(/[^a-z0-9]/g, "");
