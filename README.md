@@ -1,20 +1,28 @@
-#Album Tracker
+# Album Tracker
 
 Album Tracker is a website designed to help you search for music, play track previews, and keep track of your favorite albums. You can look up any artist or album, see cover art, view track lists, and listen to 30-second song samples. A music player stays at the bottom of the screen so your music keeps playing even when you click around the site. You can save albums to your personal collection, set a status (like Want to listen or Listened), give them 1 to 5 stars, and add your own notes. You can also sort and filter your saved list. If an album is on Deezer, you can switch to their player to listen to full tracks, or use direct links to open the album on Spotify, YouTube, or Apple Music. Lastly, the site uses Google Gemini AI to look at what you’ve saved and rated, then suggests six new albums you might like.
 
-##Screenshot & Live Link
+## Screenshot & Live Link
 
 Live Link: https://album-tracker-yourname.vercel.app (Replace with your live URL)
 
-##Screenshot:
+## Screenshot:
 
- (Include your actual screenshot path here)
+### Browsing Page
+<img width="1359" height="620" alt="image" src="https://github.com/user-attachments/assets/0f19ef1b-6206-4ba5-9377-c0fa5b507582" />
 
-##Features
+### Album Page
+<img width="1360" height="619" alt="image" src="https://github.com/user-attachments/assets/5f4d0a5e-8f3d-4995-b8c1-3c442358e690" />
+
+### Collection Page
+<img width="1358" height="615" alt="image" src="https://github.com/user-attachments/assets/2adb3fcc-8dbc-4910-bbd0-08b197d01bdd" />
+
+
+## Features
 
 Album Tracker is a website designed to help you search for music, play track previews, and keep track of your favorite albums. You can look up any artist or album, see cover art, view track lists, and listen to 30-second song samples. A music player stays at the bottom of the screen so your music keeps playing even when you click around the site. You can save albums to your personal collection, set a status (like Want to listen or Listened), give them 1 to 5 stars, and add your own notes. You can also sort and filter your saved list. If an album is on Deezer, you can switch to their player to listen to full tracks, or use direct links to open the album on Spotify, YouTube, or Apple Music. Lastly, the site uses Google Gemini AI to look at what you’ve saved and rated, then suggests six new albums you might like.
 
-##Tech Stack
+## Tech Stack
 
 React – UI library for building components
 
@@ -30,17 +38,17 @@ Gemini – Google AI service used for generating music recommendations
 
 Vercel – Hosting platform for deploying the website and API functions
 
-##How to Run It Locally
+## How to Run It Locally
 
 Follow these steps to run the project on your own computer:
 
-##Clone the repository:
+## Clone the repository:
 
-git clone https://github.com/YOUR-USERNAME/album-tracker.git
+git clone https://github.com/ebelibop/album-tracker.git
 cd album-tracker
 
 
-##Install dependencies:
+## Install dependencies:
 
 npm install
 
@@ -51,14 +59,14 @@ Create a file named .env.local in the root folder (next to package.json) and add
 GEMINI_API_KEY=your_gemini_api_key_here
 
 
-##Start the server:
+## Start the server:
 
 npm run dev
 
 
 Open your browser and go to http://localhost:5173.
 
-##Limitations
+## Limitations
 
 30-second previews: Audio previews are limited to 30 seconds because that is all the iTunes API provides.
 
